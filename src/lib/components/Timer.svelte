@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount, onDestroy } from 'svelte';
-  
+    let audio: HTMLAudioElement;
+    
     let time = 0;
     let timerInterval: number;
     let isRunning = false;
@@ -20,6 +21,7 @@
         } else {
           stopTimer();
           alert('Time is up!');
+          audio.play();
         }
       }, 1000);
     };
@@ -64,3 +66,5 @@
       {/if}
     </div>
   </div>
+
+  <audio src="sounds/alarm-clock.mp3" bind:this={audio}></audio>
